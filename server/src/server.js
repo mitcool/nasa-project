@@ -6,6 +6,14 @@ const app =require('./app');
 
 const server = http.createServer(app);
 
-server.listen(PORT, () => {
-    console.log('works');
-});
+const {loadPlanets} = require('././models/planets.model');
+
+async function startServer() {
+
+    await loadPlanets()
+    server.listen(PORT, () => {
+        console.log('works');
+    });
+}
+startServer();
+
